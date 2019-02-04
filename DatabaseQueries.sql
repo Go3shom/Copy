@@ -1,7 +1,7 @@
 CREATE DATABASE OriginalCopmany;
 use OriginalCopmany;
 
-CREATE TABLE [IF NOT EXISTS] Customers (
+CREATE TABLE IF NOT EXISTS Customers (
     ID int(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
     CustomerID int(11) NOT NULL,
     CustomerName varchar(50) NOT NULL,
@@ -23,7 +23,7 @@ INSERT INTO Customers( CustomerName, CustomerAddress ) VALUES ('Victoria Ashwort
 CREATE DATABASE CopiedCopmany;
 use CopiedCopmany;
 
-CREATE TABLE [IF NOT EXISTS] Customers (
+CREATE TABLE IF NOT EXISTS Customers (
     CustomerID int(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
     CustomerName varchar(50) NOT NULL,
     CustomerAddress varchar(150) NOT NULL
@@ -42,7 +42,7 @@ CREATE PROC CopyAllCustomers()
 AS
 BEGIN
     -- Existing:
-    INSERT [IGNORE] INTO CopiedCopmany.Customers
+    INSERT IGNORE INTO CopiedCopmany.Customers
     SELECT * FROM OriginalCopmany.Customers
 END
 
